@@ -6,17 +6,28 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using Application.Common.InterFaces.Messager;
 using Application.Common.Messager.Enums;
+using Application.Common.Messager.Entities;
+using Microsoft.Extensions.Options;
 
 public class RabbitMQServerMessager : IServerMessager, IDisposable
 {
     private IConnection? _connection;
     private IChannel? _channel;
     private readonly ConnectionFactory _factory;
-
-    public RabbitMQServerMessager()
+    private readonly RabbitMqConfiguration _rabbitMqConfig;
+    public RabbitMQServerMessager(IOptions<RabbitMqConfiguration> rabbitMqOptions)
     {
-        _factory = new ConnectionFactory { HostName = "localhost" };
-       
+        _rabbitMqConfig = rabbitMqOptions.Value;
+        _factory = new ConnectionFactory
+        {
+            HostName = _rabbitMqConfig.HostName,
+            UserName = _rabbitMqConfig.Username,
+            Password = _rabbitMqConfig.Password,
+            VirtualHost = _rabbitMqConfig.VirtualHost,
+            AutomaticRecoveryEnabled = _rabbitMqConfig.AutomaticRecoveryEnabled,
+            RequestedHeartbeat = TimeSpan.FromSeconds(_rabbitMqConfig.RequestedHeartbeat)
+        };
+
     }
 
     public async Task Publish(string serviceName, string message, Guid correlationId, string methodName)

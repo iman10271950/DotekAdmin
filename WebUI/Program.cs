@@ -1,3 +1,7 @@
+﻿using Application.Common.InterFaces.Messager;
+using Application.Common.Messager.Entities;
+using WebUI.Services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -12,6 +16,18 @@ if (!app.Environment.IsDevelopment())
     // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
+
+
+// اضافه کردن تنظیمات به IConfiguration
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+// نگاشت تنظیمات به کلاس RabbitMqConfiguration
+builder.Services.Configure<RabbitMqConfiguration>(builder.Configuration.GetSection("RabbitMqConfiguration"));
+builder.Services.AddScoped<IClientMessager, RabbitMQClientMessager>();
+builder.Services.AddScoped<IServerMessager, RabbitMQServerMessager>();
+
+//builder.Services.AddHostedService<RabbitMQHandler>();
+
 
 app.UseHttpsRedirection();
 app.UseRouting();
