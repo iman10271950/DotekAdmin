@@ -1,22 +1,27 @@
-﻿using Application.Common.InterFaces.Messager;
+﻿using WebUI;
+using Microsoft.AspNetCore.Hosting;
+using Prometheus;
+using Infrastructure;
+using Application;
+using Application.Common.Extentions;
+using Application.Common.InterFaces.Messager;
 using Application.Common.Messager.Entities;
 using WebUI.Services;
-
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 
-var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+string envirment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+
+if (envirment == "Staging")
 {
-    app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
+    builder.Configuration.AddJsonFile($"appsettings.json");
 }
-
+else
+{
+    builder.Configuration.AddJsonFile($"appsettings.{envirment}.json");
+}
 
 // اضافه کردن تنظیمات به IConfiguration
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
@@ -25,21 +30,68 @@ builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnC
 builder.Services.Configure<RabbitMqConfiguration>(builder.Configuration.GetSection("RabbitMqConfiguration"));
 builder.Services.AddScoped<IClientMessager, RabbitMQClientMessager>();
 builder.Services.AddScoped<IServerMessager, RabbitMQServerMessager>();
+// Add services to the container.
 
-//builder.Services.AddHostedService<RabbitMQHandler>();
+//builder.Services.AddImplementations();
+builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddWebUIServices(builder.Configuration);
 
 
-app.UseHttpsRedirection();
+
+
+var app = builder.Build();
+// Configure the HTTP request pipeline.
+//if (app.Environment.IsDevelopment())
+//{
+app.UseDeveloperExceptionPage();
+//}
+
+var staging = app.Environment.IsStaging();
+
+if ((envirment ?? "") != "Production")
+{
+    app.UseSwagger();
+    app.UseSwaggerUI(c =>
+    {
+        c.DefaultModelsExpandDepth(0);
+        c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);
+        c.EnableFilter();
+        c.EnablePersistAuthorization();
+        c.DisplayRequestDuration();
+    });
+}
+
+//if (!app.Environment.IsDevelopment())
+//{
+//    app.UseHsts();
+//}
+
+//}
+//app.UseHttpRedirection();
 app.UseRouting();
-
+app.UseHttpMetrics();
+//app.UseCors(option => option.AllowAnyOrigin()
+//               .AllowAnyMethod()
+//               .AllowAnyHeader()
+//               .AllowCredentials());
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors(option => option.AllowAnyHeader().AllowAnyMethod()
+.SetIsOriginAllowed(origin => true)
+.AllowCredentials().WithExposedHeaders("Authorization").WithMethods("GET", "POST", "DELETE", "PUT", "OPTIONS"));
 
-app.MapStaticAssets();
+app.UseStaticFiles();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}")
-    .WithStaticAssets();
 
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+    endpoints.MapMetrics();
+});
+//app.UseMiddleware<CustomHeaderMiddleware>();
+app.UseStatusCodePages();
 
 app.Run();
+
+public partial class Program { }

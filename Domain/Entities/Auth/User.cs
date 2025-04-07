@@ -1,5 +1,5 @@
 ﻿using Domain.Common;
-
+using Domain.Enums.Auth;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -32,7 +32,11 @@ namespace Domain.Entities.Auth
         public string BirthDate { get; set; }
         [Required]
         public int TwoStageLogin { get; set; }
-   
+        [Required]
+        public UserType Type { get; set; }
+
+
+        public UserRate UserRate { get; set; }
 
         //navigation props
         public List<Role> Roles { get; set; }

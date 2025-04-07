@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Common.BaseEntites.Common;
+using Application.Common.BaseEntities;
+
 
 namespace Application.Common.InterFaces.Messager
 {

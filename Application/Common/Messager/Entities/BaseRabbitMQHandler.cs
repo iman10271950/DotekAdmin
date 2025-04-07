@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Common.BaseEntites.Common;
+using Application.Common.BaseEntities;
 using Application.Common.InterFaces.Messager;
 using Application.Common.Messager.Enums;
 using MediatR;
