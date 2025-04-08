@@ -1,7 +1,6 @@
 ﻿
 using Application.Common.BaseEntities;
 using Application.Common.Extentions;
-
 using Application.Common.Interfaces.Services;
 using Application.Common.InterFaces.DbContext;
 using Domain.Enums.Auth;

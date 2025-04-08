@@ -4,9 +4,9 @@ using RabbitMQ.Client.Events;
 using Newtonsoft.Json;
 using Application.Common.InterFaces.Messager;
 using Application.Common.Messager.Enums;
-using Application.Common.BaseEntites.Common;
 using Application.Common.Messager.Entities;
 using Microsoft.Extensions.Options;
+using Application.Common.BaseEntities;
 
 namespace WebUI.Services
 {

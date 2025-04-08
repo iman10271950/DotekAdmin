@@ -15,8 +15,7 @@ using Application.Common.Attributes;
 using System.ComponentModel;
 using Newtonsoft.Json;
 using Application.Common.Extentions;
-using Microsoft.AspNetCore.Http.Features; 
-
+using Microsoft.AspNetCore.Http.Features;
 namespace Application.Common.Behaviours
 {
     public class LogBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
