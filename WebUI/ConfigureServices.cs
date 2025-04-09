@@ -109,7 +109,7 @@ namespace WebUI
                 });
 
                 options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
-                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "Application.xml"));
+                options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "WebUI.xml"));
 
             });
 

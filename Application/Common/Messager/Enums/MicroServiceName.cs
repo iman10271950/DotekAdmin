@@ -8,13 +8,6 @@ namespace Application.Common.Messager.Enums
 {
     public enum MicroServiceName
     {
-        LogManager,
-        ServiceResource,
-        CurrencyOrigin,
-        SSO,
-        Admin,
-        Customs,
-        ClearanceRequest,
-        Tax
+        Dotek,
     }
 }

@@ -30,6 +30,7 @@ namespace WebUI.Services
                 UserName = _rabbitMqConfig.Username,
                 Password = _rabbitMqConfig.Password,
                 VirtualHost = _rabbitMqConfig.VirtualHost,
+                Port=_rabbitMqConfig.Port,
                 AutomaticRecoveryEnabled = _rabbitMqConfig.AutomaticRecoveryEnabled,
                 RequestedHeartbeat = TimeSpan.FromSeconds(_rabbitMqConfig.RequestedHeartbeat)
             };
@@ -98,7 +99,7 @@ namespace WebUI.Services
             }
             else
             {
-                throw new TimeoutException("Timeout while waiting for response.");
+                return new BaseResult_VM<T> { Code = -1000, Message = "سرویس مورد نظر پاسخگو نیست " };
             }
         }
 

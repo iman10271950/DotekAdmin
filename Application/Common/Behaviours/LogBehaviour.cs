@@ -48,8 +48,8 @@ namespace Application.Common.Behaviours
             Exception? exception = null;
             RequestAdminLog requestLogClass = new RequestAdminLog();
 
-            //requestLogClass.IPAddress = GetIPAddress();
-            //requestLogClass.RequestedUrl = GetRequestedUrl();
+            requestLogClass.IPAddress = GetIPAddress();
+            requestLogClass.RequestedUrl = GetRequestedUrl();
 
             var logAttribute = GetAttribute<DotekLogAttribute>(httpContext);
             if (logAttribute == null)

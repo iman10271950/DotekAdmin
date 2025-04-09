@@ -34,7 +34,7 @@ namespace Infrastructure
 
             services.AddDbContext<AdminDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("Dotek"),
+                options.UseSqlServer(configuration.GetConnectionString("DotekAdmin"),
                 builder => builder.MigrationsAssembly(typeof(AdminDbContext).Assembly.FullName));
                 //options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTrackingWithIdentityResolution);
             });
@@ -44,7 +44,7 @@ namespace Infrastructure
 
             services.AddScoped<IAdminLogDbContext>(provider => provider.GetRequiredService<AdminLogDbContext>());
             services.AddDbContext<AdminLogDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("DotekShopLog"),
+                options.UseSqlServer(configuration.GetConnectionString("DotekAdminLog"),
                 builder => builder.MigrationsAssembly(typeof(AdminLogDbContext).Assembly.FullName)));
 
            
