@@ -1,4 +1,5 @@
 ﻿using Application.Business.Common.ViewModel;
+using Application.Business.DotekRequest.DotekUser.Command;
 using Application.Business.DotekRequest.DotekUser.Query;
 using Application.Business.DotekRequest.Query;
 using Application.Business.DotekRequest.ViewModel;
@@ -29,6 +30,37 @@ namespace WebUI.Controllers
         [ProducesResponseType(typeof(AuthenticatedResponse_VM), 0)]
         [ProducesResponseType(typeof(List<Product_VM>), 1)]
         public async Task<IActionResult> GetAllUserForAdmin([FromBody] GetAllUserForAdminQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+       
+        /// <summary>
+        /// دریافت لیست نقش ها
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> GetAllRoles([FromBody] GetAllRolesQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// دریافت اطلاعات کاربر با شناسه
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> GetUserInformationWithIdInAdmin([FromBody] GetUserInformationWithIdInAdminQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// ویرایش کاربر
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
