@@ -1,4 +1,5 @@
 ﻿using Application.Business.Common.ViewModel;
+using Application.Business.DotekRequest.DotekUser.Query;
 using Application.Business.DotekRequest.Query;
 using Application.Business.DotekRequest.ViewModel;
 using Application.Common.Attributes;
@@ -18,7 +19,7 @@ namespace WebUI.Controllers
             
         }
         /// <summary>
-        /// دریافت لیست محصولات
+        /// دریافت لیست کاربران
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -27,7 +28,7 @@ namespace WebUI.Controllers
         [DotekLog(AdminServices.Request, AdminMethods.Request_GetAllProductListWithFilter)]
         [ProducesResponseType(typeof(AuthenticatedResponse_VM), 0)]
         [ProducesResponseType(typeof(List<Product_VM>), 1)]
-        public async Task<IActionResult> GetAllProductListWithFilter([FromBody] GetDotekAllProductListWithFilterQuery command)
+        public async Task<IActionResult> GetAllUserForAdmin([FromBody] GetAllUserForAdminQuery command)
         {
             return Ok(await Mediator.Send(command));
         }

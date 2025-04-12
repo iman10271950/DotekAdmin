@@ -7,6 +7,9 @@ using Application.Common.Extentions;
 using Application.Common.InterFaces.Messager;
 using Application.Common.Messager.Entities;
 using WebUI.Services;
+using Application.Business.DotekRequest.ViewModel;
+using Application.Common.InterFaces.Services;
+using Application.Common.Methodes;
 var builder = WebApplication.CreateBuilder(args);
 
 
@@ -25,13 +28,15 @@ else
 
 // اضافه کردن تنظیمات به IConfiguration
 builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+builder.Services.Configure<OtherServicesAuth_VM>(
+    builder.Configuration.GetSection("AuthDefaults"));
 
 // نگاشت تنظیمات به کلاس RabbitMqConfiguration
 builder.Services.Configure<RabbitMqConfiguration>(builder.Configuration.GetSection("RabbitMqConfiguration"));
 builder.Services.AddScoped<IClientMessager, RabbitMQClientMessager>();
 builder.Services.AddScoped<IServerMessager, RabbitMQServerMessager>();
 // Add services to the container.
-
+builder.Services.AddScoped<IAuthHelper,AuthHelper>();
 //builder.Services.AddImplementations();
 builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
