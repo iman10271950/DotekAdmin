@@ -38,4 +38,9 @@
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Business\DotekRequest\DotekUser\NewFolder\" />
+    <Folder Include="Business\DotekRequest\DotekUser\Query\" />
+  </ItemGroup>
+
 </Project>
