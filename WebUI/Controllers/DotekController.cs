@@ -126,6 +126,16 @@ namespace WebUI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
+        /// <summary>
+        /// دریافت لیست محصولات
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> GetAllProductListWithFilter([FromBody] GetAllProductListWithFilterQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
         
     }
 }
