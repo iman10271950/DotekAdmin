@@ -1,6 +1,8 @@
 ﻿using Application.Business.Common.ViewModel;
 using Application.Business.DotekRequest.DotekUser.Command;
 using Application.Business.DotekRequest.DotekUser.Query;
+using Application.Business.DotekRequest.Product.Command;
+using Application.Business.DotekRequest.Product.Query;
 using Application.Business.DotekRequest.Query;
 using Application.Business.DotekRequest.ViewModel;
 using Application.Common.Attributes;
@@ -84,5 +86,46 @@ namespace WebUI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
+        /// <summary>
+        /// غیر فعالسازی اکانت کاربر
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> InactiveDotekUser([FromBody] InactiveDotekUserCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// افزودن محصول
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> InsertProductInAdmin([FromBody] InsertProductInAdminCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// دریافت اطلاعات یک محصول با شناسه محصول
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> GetProductWithId([FromBody] GetProductWithIdQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// حذف محصول
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> DeleteProduct([FromBody] DeleteProductCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        
     }
 }

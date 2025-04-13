@@ -11,30 +11,30 @@ using Application.Common.Messager.Enums;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace Application.Business.DotekRequest.DotekUser.Command
+namespace Application.Business.DotekRequest.Product.Command
 {
-    public class DeleteDotekRolleCommand : IRequest<BaseResult_VM<bool>>
+    public class DeleteProductCommand:IRequest<BaseResult_VM<bool>>
     {
+        public long ProductId { get; set; }
         public OtherServicesAuth_VM Auth { get; set; }
-        public DotekRole_VM Role { get; set; }
     }
-    public class DeleteDotekRolleCommandHandler : IRequestHandler<DeleteDotekRolleCommand, BaseResult_VM<bool>>
+    public class DeleteProductCommandHandler : IRequestHandler<DeleteProductCommand, BaseResult_VM<bool>>
     {
         private readonly IClientMessager _clientMessager;
         private readonly IAuthHelper _auth;
 
-        public DeleteDotekRolleCommandHandler(IClientMessager clientMessager,IAuthHelper auth)
+        public DeleteProductCommandHandler(IClientMessager clientMessager,IAuthHelper auth)
         {
             _clientMessager = clientMessager;
             _auth = auth;
         }
-        public async Task<BaseResult_VM<bool>> Handle(DeleteDotekRolleCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResult_VM<bool>> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
         {
             request.Auth = _auth.GetDefaultAuth();
-            var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<bool>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(request), "Admin_DeleteRoleInAdmin");
+            var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<bool>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(request), "Admin_InsertProductInAdmin");
             if (!methodResult.Success)
             {
-                return new BaseResult_VM<bool>(false, methodResult.Code, "خطا در فراخوانی سرویس حذف نقش", false);
+                return new BaseResult_VM<bool>(false, methodResult.Code, "خطا در فراخوانی سرویس حذف محصول");
             }
 
             return methodResult.Result;
