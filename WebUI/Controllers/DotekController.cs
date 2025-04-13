@@ -64,5 +64,25 @@ namespace WebUI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
+        /// <summary>
+        /// ویرایش نقش
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> UpdateRolleInAdmin([FromBody] UpdateRolleInAdminCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// حذف نقش
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> DeleteDotekRolle([FromBody] DeleteDotekRolleCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
     }
 }
