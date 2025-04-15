@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Business.DotekRequest.Product.ViewModel
+namespace Application.Business.Product.ViewModel
 {
     public class OtherProperty_VM
     {

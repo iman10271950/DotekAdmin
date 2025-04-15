@@ -12,7 +12,7 @@ using Application.Common.Messager.Enums;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace Application.Business.DotekRequest.Product.Query
+namespace Application.Business.Product.Query
 {
     public class GetAllProductListWithFilterQuery : IRequest<BaseResult_VM<List<Product_VM>>>
     {

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Business.DotekRequest.DotekUser.VieModel;
 using Application.Business.DotekRequest.ViewModel;
+using Application.Business.DotekUser.VieModel;
 using Application.Common.BaseEntities;
 using Application.Common.InterFaces.Messager;
 using Application.Common.InterFaces.Services;
@@ -13,7 +13,7 @@ using Application.Common.Models;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace Application.Business.DotekRequest.DotekUser.Query
+namespace Application.Business.DotekUser.Query
 {
     public class GetAllUserForAdminQuery:  IRequest<BaseResult_VM<PaginatedList<DotekUser_VM>>>
     {

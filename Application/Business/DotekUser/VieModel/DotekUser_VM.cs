@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Domain.Entities.Auth;
 using Domain.Enums.Auth;
 
-namespace Application.Business.DotekRequest.DotekUser.VieModel
+namespace Application.Business.DotekUser.VieModel
 {
     public class DotekUser_VM
     {

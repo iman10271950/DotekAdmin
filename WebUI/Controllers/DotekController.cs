@@ -1,10 +1,10 @@
 ﻿using Application.Business.Common.ViewModel;
-using Application.Business.DotekRequest.DotekUser.Command;
-using Application.Business.DotekRequest.DotekUser.Query;
-using Application.Business.DotekRequest.Product.Command;
-using Application.Business.DotekRequest.Product.Query;
 using Application.Business.DotekRequest.Query;
 using Application.Business.DotekRequest.ViewModel;
+using Application.Business.DotekUser.Command;
+using Application.Business.DotekUser.Query;
+using Application.Business.Product.Command;
+using Application.Business.Product.Query;
 using Application.Common.Attributes;
 using Application.Common.Auth;
 using Domain.Entities.Log;
@@ -136,6 +136,47 @@ namespace WebUI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
+        /// <summary>
+        /// دریافت لیست درخواست ها
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> GetlAllDotekRequest([FromBody] GetlAllDotekRequestQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        ///  به روز رسانی درخواست
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> UpdateDotekReques([FromBody] UpdateDotekRequesQtuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        ///  غیرفعال سازی درخواست
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> InActiveDotekRequestStatus([FromBody] InActiveDotekRequestStatusQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        ///  پیش نیاز های لیست درخواست ها
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> PrepaireRequestList([FromBody] PrepaireRequestListQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
         
+
     }
 }

@@ -13,7 +13,7 @@ using Application.Common.Models;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace Application.Business.DotekRequest.DotekUser.Query
+namespace Application.Business.DotekUser.Query
 {
     public class GetAllRolesQuery : IRequest<BaseResult_VM<List<DotekRole_VM>>>
     {

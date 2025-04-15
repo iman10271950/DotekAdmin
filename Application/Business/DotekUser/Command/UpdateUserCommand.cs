@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Business.DotekRequest.DotekUser.VieModel;
 using Application.Business.DotekRequest.ViewModel;
+using Application.Business.DotekUser.VieModel;
 using Application.Common.BaseEntities;
 using Application.Common.InterFaces.Messager;
 using Application.Common.InterFaces.Services;
@@ -13,7 +13,7 @@ using Application.Common.Models;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace Application.Business.DotekRequest.DotekUser.Command
+namespace Application.Business.DotekUser.Command
 {
     public class UpdateUserCommand : IRequest<BaseResult_VM<bool>>
     {

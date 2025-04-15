@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Enum;
 
-namespace Application.Business.DotekRequest.Product.ViewModel
+namespace Application.Business.Product.ViewModel
 {
     public class ProductInfo_VM
     {

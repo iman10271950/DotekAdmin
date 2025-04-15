@@ -11,7 +11,7 @@ using Application.Common.Messager.Enums;
 using MediatR;
 using Newtonsoft.Json;
 
-namespace Application.Business.DotekRequest.DotekUser.Command
+namespace Application.Business.DotekUser.Command
 {
     public class UpdateRolleInAdminCommand:IRequest<BaseResult_VM<bool>>
     {
