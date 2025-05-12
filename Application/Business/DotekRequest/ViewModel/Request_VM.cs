@@ -48,7 +48,7 @@ namespace Application.Business.DotekRequest.ViewModel
 
         [Description("تاریخ انقضا")]
         public DateTime DateExpire { get; set; }
-        public string DateExpireShamsi { get; set;; }
+        public string DateExpireShamsi { get; set; }
         public long CityId { get; set; }
         public long ProviceId { get; set; }
     }

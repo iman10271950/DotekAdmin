@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Application.Business.DotekRequest.Product.ViewModel;
 using Application.Business.DotekRequest.ViewModel;
 using Application.Common.BaseEntities;
 using Application.Common.InterFaces.Messager;
