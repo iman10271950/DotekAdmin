@@ -27,8 +27,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
-        //[DotekAuthorize(AuthorizeEnum.Request_GetCurrentUserRequestList)]
-        [DotekLog(AdminServices.Request, AdminMethods.Request_GetAllProductListWithFilter)]
+        [DotekAuthorize(AuthorizeEnum.Request_GetCurrentUserRequestList)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetAllUserForAdmin)]
         [ProducesResponseType(typeof(AuthenticatedResponse_VM), 0)]
         [ProducesResponseType(typeof(List<Product_VM>), 1)]
         public async Task<IActionResult> GetAllUserForAdmin([FromBody] GetAllUserForAdminQuery command)
@@ -42,6 +42,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetAllRoles)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetAllRoles)]
         public async Task<IActionResult> GetAllRoles([FromBody] GetAllRolesQuery command)
         {
             return Ok(await Mediator.Send(command));
@@ -52,26 +54,32 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetUserInformationWithIdInAdmin)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetUserInformationWithIdInAdmin)]
         public async Task<IActionResult> GetUserInformationWithIdInAdmin([FromBody] GetUserInformationWithIdInAdminQuery command)
         {
             return Ok(await Mediator.Send(command));
         }
         /// <summary>
-        /// ویرایش کاربر
+        /// ویرایش کاربر Dotek
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_UpdateUser)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_UpdateUser)]
         public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
         /// <summary>
-        /// ویرایش نقش
+        /// ویرایش نقش 
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_UpdateRolleInAdmin)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_UpdateRolleInAdmin)]
         public async Task<IActionResult> UpdateRolleInAdmin([FromBody] UpdateRolleInAdminCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -82,6 +90,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_DeleteDotekRolle)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_DeleteDotekRolle)]
         public async Task<IActionResult> DeleteDotekRolle([FromBody] DeleteDotekRolleCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -92,6 +102,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_InactiveDotekUser)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_InactiveDotekUser)]
         public async Task<IActionResult> InactiveDotekUser([FromBody] InactiveDotekUserCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -102,6 +114,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_InsertProductInAdmin)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_InsertProductInAdmin)]
         public async Task<IActionResult> InsertProductInAdmin([FromBody] InsertProductInAdminCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -112,6 +126,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetProductWithId)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetProductWithId)]
         public async Task<IActionResult> GetProductWithId([FromBody] GetProductWithIdQuery command)
         {
             return Ok(await Mediator.Send(command));
@@ -122,6 +138,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_DeleteProduct)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_DeleteProduct)]
         public async Task<IActionResult> DeleteProduct([FromBody] DeleteProductCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -132,6 +150,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetAllProductListWithFilter)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetAllProductListWithFilter)]
         public async Task<IActionResult> GetAllProductListWithFilter([FromBody] GetAllProductListWithFilterQuery command)
         {
             return Ok(await Mediator.Send(command));
@@ -142,6 +162,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetAllProductListWithFilter)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetlAllDotekRequest)]
         public async Task<IActionResult> GetlAllDotekRequest([FromBody] GetlAllDotekRequestQuery command)
         {
             return Ok(await Mediator.Send(command));
