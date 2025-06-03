@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(AdminDbContext))]
-    [Migration("20250408083929_init")]
+    [Migration("20250603155432_init")]
     partial class init
     {
         /// <inheritdoc />
@@ -89,11 +89,11 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Domain.Entities.Auth.Activation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("UserId"));
 
                     b.Property<int>("ActivationCode")
                         .HasColumnType("int");
@@ -104,6 +104,9 @@ namespace Infrastructure.Migrations
                     b.Property<DateTime>("ExpireTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<long>("Id")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("IpAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -111,13 +114,10 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Status")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
                     b.Property<long>("UserId1")
                         .HasColumnType("bigint");
 
-                    b.HasKey("Id");
+                    b.HasKey("UserId");
 
                     b.HasIndex("UserId1");
 

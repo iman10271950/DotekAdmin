@@ -155,19 +155,19 @@ namespace Infrastructure.Migrations
                 name: "Activation",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
                     ActivationCode = table.Column<int>(type: "int", nullable: false),
                     CreateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     ExpireTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     IpAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId1 = table.Column<long>(type: "bigint", nullable: false)
+                    UserId1 = table.Column<long>(type: "bigint", nullable: false),
+                    Id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Activation", x => x.Id);
+                    table.PrimaryKey("PK_Activation", x => x.UserId);
                     table.ForeignKey(
                         name: "FK_Activation_Users_UserId1",
                         column: x => x.UserId1,
