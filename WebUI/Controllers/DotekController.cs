@@ -21,6 +21,7 @@ namespace WebUI.Controllers
         {
             
         }
+        #region User
         /// <summary>
         /// دریافت لیست کاربران
         /// </summary>
@@ -109,6 +110,18 @@ namespace WebUI.Controllers
             return Ok(await Mediator.Send(command));
         }
         /// <summary>
+        ///  ویرایش وضعیت دسته کاربران
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> UpdateUsersStatus([FromBody] UpdateUsersStatusCommand command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        #endregion
+        #region Product
+        /// <summary>
         /// افزودن محصول
         /// </summary>
         /// <param name="query"></param>
@@ -156,6 +169,8 @@ namespace WebUI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
+        #endregion
+        #region Request
         /// <summary>
         /// دریافت لیست درخواست ها
         /// </summary>
@@ -182,9 +197,10 @@ namespace WebUI.Controllers
         ///  غیرفعال سازی درخواست
         /// </summary>
         /// <param name="query"></param>
-        /// <returns></returns>
+        /// <returns></returns> 
+        /// 
         [HttpPost]
-        public async Task<IActionResult> InActiveDotekRequestStatus([FromBody] InActiveDotekRequestStatusQuery command)
+        public async Task<IActionResult> UpdateDotekRequestStatus([FromBody] UpdateDotekRequestStatusCommand command)
         {
             return Ok(await Mediator.Send(command));
         }
@@ -198,7 +214,17 @@ namespace WebUI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
-        
-
+        /// <summary>
+        ///  پیش نیاز های سرویس های دوتک
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpGet]
+        public async Task<IActionResult> PrepaireDotekServices([FromQuery] PrepaireDotekServicesQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        #endregion
+     
     }
 }
