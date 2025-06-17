@@ -17,8 +17,7 @@ namespace Application.Business.DotekRequest.Query
   
     public class GetlAllDotekRequestQuery : IRequest<BaseResult_VM<PaginatedList<Request_VM>>>
     {
-        public RequestListSearch_VM SearchItems { get; set; }
-        public OtherServicesAuth_VM Auth { get; set; }
+     
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
     }
@@ -34,7 +33,17 @@ namespace Application.Business.DotekRequest.Query
         }
         public async Task<BaseResult_VM<PaginatedList<Request_VM>>> Handle(GetlAllDotekRequestQuery request, CancellationToken cancellationToken)
         {
-            var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<PaginatedList<Request_VM>>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(request), "Request_GetlAllRequestForAdmin");
+
+            var input = new GetlAllDotekRequestInput
+            {
+                Auth = _auth.GetDefaultAuth(),
+                PageNumber = request.PageNumber,
+                PageSize = request.PageSize,
+                SearchItems = null,
+            };
+
+            var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<PaginatedList<Request_VM>>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(input), "Admin_GetlAllRequestForAdmin");
+          
             if (methodResult.Code == 103)
             {
                 return methodResult.Result;
@@ -46,5 +55,14 @@ namespace Application.Business.DotekRequest.Query
 
             return methodResult.Result;
         }
+        private class GetlAllDotekRequestInput
+        {
+            public RequestListSearch_VM SearchItems { get; set; }
+            public OtherServicesAuth_VM Auth { get; set; }
+            public int PageNumber { get; set; } = 1;
+            public int PageSize { get; set; } = 10;
+
+        }
     }
+    
 }

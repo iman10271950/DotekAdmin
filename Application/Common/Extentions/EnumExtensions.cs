@@ -1,4 +1,5 @@
 ﻿
+using Application.Common.BaseEntities;
 using Domain.Common;
 using System;
 using System.Collections.Generic;

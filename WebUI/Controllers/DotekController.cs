@@ -15,9 +15,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace WebUI.Controllers
 {
-    public class DotekController1 : ApiControllerBase
+    public class DotekController : ApiControllerBase
     {
-        public DotekController1(IMediator mediator):base(mediator)
+        public DotekController(IMediator mediator):base(mediator)
         {
             
         }

@@ -4,6 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application.Business.Auth.User.ViewModel;
+using Application.Business.Product.ViewModel;
+using Application.Business.TransportVehicleBusiness.ViewModel;
 using Application.Common.Extentions;
 using DocumentFormat.OpenXml.Bibliography;
 
@@ -12,12 +15,16 @@ namespace Application.Business.DotekRequest.ViewModel
      public class Request_VM 
     {
         public long Id { get; set; }
+        [Description("کد یکتای درخواست")]
+        public string? RequestTraceCode { get; set; }
         [Description("شناسه کاربر")]
         public long UserId { get; set; }
 
         [Description("قیمت")]
         public decimal Price { get; set; }
 
+        [Description("شناسه درخواست پیوست شده")]
+        public long? AttachedRequestId { get; set; }
         [Description("شناسه محصول")]
         public long ProductId { get; set; }
 
@@ -32,16 +39,6 @@ namespace Application.Business.DotekRequest.ViewModel
         public int RequestType { get; set; } 
         public string RequestTypeDesc { get; set; }
 
-        [Description("وزن")]
-        public decimal Weight { get; set; }
-
-        [Description("نوع پرداخت")]
-        public int PymentType { get; set; } 
-        public string PymentTypeDesc { get; set; }
-
-        [Description("مقدار")]
-        public decimal Quantity { get; set; }
-
         [Description("تاریخ ایجاد")]
         public DateTime CreateDate { get; set; }
         public string CreateDateShamsi { get; set; }
@@ -49,7 +46,13 @@ namespace Application.Business.DotekRequest.ViewModel
         [Description("تاریخ انقضا")]
         public DateTime DateExpire { get; set; }
         public string DateExpireShamsi { get; set; }
-        public long CityId { get; set; }
-        public long ProviceId { get; set; }
+        public bool IsrequestEditable { get; set; } = false;
+        public User_VM? user { get; set; }
+        public List<ViewOtherProperty_VM>? ViewOtherProperties { get; set; }
+        public ProductUnit_VM? ProductUnit { get; set; }
+        public Product_VM? Product { get; set; }
+        [Description("واحد محصول")]
+        public Request_VM? AttachedRequest { get; set; }
+        public TransportVehicle_VM? TransportVehicle { get; set; }
     }
 }
