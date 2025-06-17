@@ -12,5 +12,6 @@ namespace Application.Business.DotekUser.VieModel
     public class PrepairDotekService_VM
     {
          public List<BaseEnum_VM> UserStatus { get; set; }
+        public List<BaseEnum_VM> RequestStatusList { get; set; }
     }
 }

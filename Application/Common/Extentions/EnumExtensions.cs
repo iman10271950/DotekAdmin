@@ -29,7 +29,7 @@ namespace Application.Common.Extentions
                 enumList.Add(new BaseEnum_VM
                 {
                     Id = (int)value, // مقدار عددی Enum
-                    Name = value.ToString() // نام Enum
+                    Name = GetDescription((T)value) // نام Enum
                 });
             }
 
