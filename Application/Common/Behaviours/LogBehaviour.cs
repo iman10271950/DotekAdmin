@@ -58,10 +58,10 @@ namespace Application.Common.Behaviours
             }
             else
             {
-                requestLogClass.ServiceId = logAttribute.services;
-                requestLogClass.ServiceOrginalId = logAttribute.services;
-                requestLogClass.ServiceMethodId = logAttribute.methods;
-                requestLogClass.MethodOrginalId = logAttribute.methods;
+                requestLogClass.ServiceId = (int)logAttribute.services;
+                requestLogClass.ServiceOrginalId =(int) logAttribute.services;
+                requestLogClass.ServiceMethodId = (int)logAttribute.methods;
+                requestLogClass.MethodOrginalId = (int)logAttribute.methods;
                 requestLogClass.UrlCode = int.Parse(_currentUserService.UserRoleId ?? "-1000");
 
             }

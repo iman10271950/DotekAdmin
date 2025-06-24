@@ -8,6 +8,7 @@ using Application.Business.Product.Query;
 using Application.Common.Attributes;
 using Application.Common.Auth;
 using Domain.Entities.Log;
+using Domain.Enums;
 using Domain.Enums.Auth;
 using ICSharpCode.Decompiler.TypeSystem;
 using MediatR;

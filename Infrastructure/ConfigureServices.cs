@@ -14,7 +14,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Application.Common.Auth;
 using Infrastructure.Services.Support;
 using Application.Common.Interfaces.Logger;
-using Infrastructure.Log;
 using Application.Common.Interfaces;
 using Infrastructure.Services.DateTime;
 using Application.Common.Methodes;
@@ -96,7 +95,7 @@ namespace Infrastructure
             services.AddSingleton<IExecutionMode, ExecutionModeSettings>();
             services.AddScoped<IShahkarValidation,ShahkarValidate>();
             services.AddScoped<ISMS, SMS>();
-            services.AddScoped<ILogger, Logger>();
+            services.AddScoped<ILogger, LogerMethode>();
             services.AddScoped<IDateTime, DateTimeService>();
     
 

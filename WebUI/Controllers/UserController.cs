@@ -7,6 +7,7 @@ using Application.Business.Product.Command;
 using Application.Business.Product.Query;
 using Application.Common.Attributes;
 using Domain.Entities.Log;
+using Domain.Enums;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
