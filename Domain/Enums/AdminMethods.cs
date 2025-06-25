@@ -15,6 +15,7 @@ public enum AdminMethods
     Dotek_DeleteProduct=100010,
     Dotek_GetAllProductListWithFilter=100011,
     Dotek_GetlAllDotekRequest=100012,
+    Dotek_GUpdateDotekRequestStatus=100013,
     
 
     #endregion

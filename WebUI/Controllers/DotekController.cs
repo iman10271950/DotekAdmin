@@ -201,6 +201,7 @@ namespace WebUI.Controllers
         /// <returns></returns> 
         /// 
         [HttpPost]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GUpdateDotekRequestStatus)]
         public async Task<IActionResult> UpdateDotekRequestStatus([FromBody] UpdateDotekRequestStatusCommand command)
         {
             return Ok(await Mediator.Send(command));

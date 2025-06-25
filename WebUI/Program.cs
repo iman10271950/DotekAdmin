@@ -12,6 +12,10 @@ using Application.Common.InterFaces.Services;
 using Application.Common.Methodes;
 var builder = WebApplication.CreateBuilder(args);
 
+builder.WebHost.ConfigureKestrel(serverOptions =>
+{
+    // Nothing here is fine if config is in appsettings
+});
 
 
 string envirment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");

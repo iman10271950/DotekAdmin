@@ -19,7 +19,7 @@ namespace Application.Business.DotekRequest.Query
         public OtherServicesAuth_VM Auth { get; set; }
         public List<long> RequestIdList { get; set; }
         public int Requeststatus { get; set; }
-    }
+    } 
     public class InActiveRequestStatusCommandHandler : IRequestHandler<UpdateDotekRequestStatusCommand, BaseResult_VM<bool>>
     {
         private readonly IClientMessager _clientMessager;
@@ -30,13 +30,13 @@ namespace Application.Business.DotekRequest.Query
             _clientMessager = clientMessager;
             _auth = auth;
         }
-        public async Task<BaseResult_VM<bool>> Handle(UpdateDotekRequestStatusCommand request, CancellationToken cancellationToken)
+        public async Task<BaseResult_VM<bool>> Handle(UpdateDotekRequestStatusCommand request, CancellationToken cancellationToken)  
         {
             request.Auth = _auth.GetDefaultAuth();
             var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<bool>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(request), "Admin_UpdateRequestStatus");
             if (!methodResult.Success)
             {
-                return new BaseResult_VM<bool>(false, methodResult.Code, "خطا در فراخوانی سرویس غیرفعالسازی درخواست");
+                return new BaseResult_VM<bool>(false, methodResult.Code, methodResult.Message);
             }
 
             return methodResult.Result;
