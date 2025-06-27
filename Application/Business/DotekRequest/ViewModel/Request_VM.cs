@@ -20,8 +20,8 @@ namespace Application.Business.DotekRequest.ViewModel
         [Description("شناسه کاربر")]
         public long UserId { get; set; }
 
-        [Description("قیمت")]
-        public decimal Price { get; set; }
+        [Description("قیمت")] 
+        public decimal? Price { get; set; } 
 
         [Description("شناسه درخواست پیوست شده")]
         public long? AttachedRequestId { get; set; }
