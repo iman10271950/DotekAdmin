@@ -1,3 +1,4 @@
+using Application.Business.DotekUser.Query;
 using Application.Business.PaymentServices.ViewModel;
 using Application.Common.BaseEntities;
 using Application.Common.InterFaces.Messager;
@@ -19,12 +20,14 @@ public class GetPaymentDataNeedOperationListQueryHandler:IRequestHandler<GetPaym
 {
     private readonly IClientMessager _clientMessager;
     private readonly IOptions<MessageSecuritySettings> _securityOptions;
+    private readonly IMediator _mediator;
 
     public GetPaymentDataNeedOperationListQueryHandler(IClientMessager clientMessager,
-        IOptions<MessageSecuritySettings> securityOptions)
+        IOptions<MessageSecuritySettings> securityOptions,IMediator mediator)
     {
         _clientMessager = clientMessager;
         _securityOptions = securityOptions;
+        _mediator = mediator;
     }
     public async Task<BaseResult_VM<PaginatedList<PaymentHistory_VM>>> Handle(GetPaymentDataNeedOperationListQuery request, CancellationToken cancellationToken)
     {
@@ -56,6 +59,17 @@ public class GetPaymentDataNeedOperationListQueryHandler:IRequestHandler<GetPaym
         }
 
         var result = JsonConvert.DeserializeObject<PaginatedList<PaymentHistory_VM>>(decryptResponse);
+
+        foreach (var item in result.Items)
+        {
+            var user = await _mediator.Send(new GetUserInformationWithIdInAdminQuery
+                { NationalCode = item.UserNationalCode });
+            if (user.Code == 0)
+            {
+                item.User = user.Result;
+                
+            }
+        } 
         return new BaseResult_VM<PaginatedList<PaymentHistory_VM>>
         {
             Result = result,

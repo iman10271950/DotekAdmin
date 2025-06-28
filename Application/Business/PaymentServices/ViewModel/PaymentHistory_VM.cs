@@ -1,3 +1,5 @@
+using Application.Business.DotekRequest.ViewModel;
+using Application.Business.DotekUser.VieModel;
 using Application.Common.Extentions;
 using Domain.Enums;
 
@@ -13,10 +15,12 @@ public class PaymentHistory_VM
     public string OperationTypeDesc { get=>OperationType==null ? "" :OperationType.GetDescription(); }
     public string? TrackingCode { get; set; }
     public UserPaymentDataStatus Status { get; set; }
+    public string? UserNationalCode { get; set; }
     public string StatusDesc
     {
         get => Status == null ? "" : Status.GetDescription();
     }
     public int Provider { get; set; }
     public string ProviderDesc { get; set; }
+    public DotekUser_VM? User { get; set; }
 }

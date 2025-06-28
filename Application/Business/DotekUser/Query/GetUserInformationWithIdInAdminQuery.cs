@@ -18,7 +18,8 @@ namespace Application.Business.DotekUser.Query
     public class GetUserInformationWithIdInAdminQuery : IRequest<BaseResult_VM<DotekUser_VM>>
     {
         public OtherServicesAuth_VM Auth { get; set; }
-        public long UserId { get; set; }
+        public long? UserId { get; set; }
+        public string? NationalCode { get; set; }
     }
     public class GetUserInformationWithIdInAdminQueryHandler : IRequestHandler<GetUserInformationWithIdInAdminQuery, BaseResult_VM<DotekUser_VM>>
     {
