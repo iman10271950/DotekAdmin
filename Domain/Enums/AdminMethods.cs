@@ -19,13 +19,19 @@ public enum AdminMethods
     
 
     #endregion
-
+    
     #region  User 
 
     User_ExistUser=200001,
     User_CreateAccount=200002,
     User_Login=200003,
     User_UpdateUserCommand=200004,
+    #endregion
+
+    #region  Payment
+
+    Payment_GetBaseWalletInformation=300001,   
+
     #endregion
  
 }

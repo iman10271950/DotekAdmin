@@ -8,6 +8,7 @@ using Application.Common.InterFaces.Messager;
 using Application.Common.Messager.Entities;
 using WebUI.Services;
 using Application.Business.DotekRequest.ViewModel;
+using Application.Common.BaseEntities;
 using Application.Common.InterFaces.Services;
 using Application.Common.Methodes;
 var builder = WebApplication.CreateBuilder(args);
@@ -46,7 +47,8 @@ builder.Services.AddApplicationServices();
 builder.Services.AddInfrastructureServices(builder.Configuration);
 builder.Services.AddWebUIServices(builder.Configuration);
 
-
+builder.Services.Configure<MessageSecuritySettings>(
+    builder.Configuration.GetSection("MessageSecurity"));
 
 
 var app = builder.Build();

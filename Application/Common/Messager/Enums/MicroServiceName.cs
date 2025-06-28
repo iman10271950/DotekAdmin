@@ -9,5 +9,6 @@ namespace Application.Common.Messager.Enums
     public enum MicroServiceName
     {
         Dotek,
+        Payment,
     }
 }
