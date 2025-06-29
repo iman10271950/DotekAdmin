@@ -11,6 +11,8 @@ public class PaymentHistory_VM
     public long WalletId { get; set; }
     public decimal Amount { get; set; }
     public DateTime CreateDate { get; set; }
+    public string ShamsiCreateDate { get=>CreateDate.ToShamsi(); }
+    public string Authority { get; set; }
     public Operationype OperationType { get; set; }
     public string OperationTypeDesc { get=>OperationType==null ? "" :OperationType.GetDescription(); }
     public string? TrackingCode { get; set; }
@@ -23,4 +25,5 @@ public class PaymentHistory_VM
     public int Provider { get; set; }
     public string ProviderDesc { get; set; }
     public DotekUser_VM? User { get; set; }
+    public string? ShabaNumber { get; set; }
 }

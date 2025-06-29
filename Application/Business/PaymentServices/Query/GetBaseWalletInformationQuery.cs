@@ -1,3 +1,4 @@
+using Application.Business.DotekUser.Query;
 using Application.Business.PaymentServices.ViewModel;
 using Application.Common.BaseEntities;
 using Application.Common.InterFaces.Messager;
@@ -20,12 +21,14 @@ public class
 {
     private readonly IClientMessager _clientMessager;
     private readonly IOptions<MessageSecuritySettings> _securityOptions;
+    private readonly IMediator _mediator;
 
     public GetBaseWalletInformationQueryHandler(IClientMessager clientMessager,
-        IOptions<MessageSecuritySettings> securityOptions)
+        IOptions<MessageSecuritySettings> securityOptions,IMediator mediator)
     {
         _clientMessager = clientMessager;
         _securityOptions = securityOptions;
+        _mediator = mediator;
     }
 
     public async Task<BaseResult_VM<Wallet_VM>> Handle(GetBaseWalletInformationQuery request,
@@ -62,6 +65,16 @@ public class
         }
 
         var result = JsonConvert.DeserializeObject<Wallet_VM>(decryptResponse);
+        foreach (var item in result.PaymentDataHistory.Items)
+        {
+            var user = await _mediator.Send(new GetUserInformationWithIdInAdminQuery
+                { NationalCode = item.UserNationalCode });
+            if (user.Code == 0)
+            {
+                item.User = user.Result;
+                
+            }
+        } 
         return new BaseResult_VM<Wallet_VM>
         {
             Result = result,

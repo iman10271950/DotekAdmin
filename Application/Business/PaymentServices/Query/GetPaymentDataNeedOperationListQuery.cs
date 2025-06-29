@@ -69,6 +69,8 @@ public class GetPaymentDataNeedOperationListQueryHandler:IRequestHandler<GetPaym
                 item.User = user.Result;
                 
             }
+
+            item.ShabaNumber = item.Authority;
         } 
         return new BaseResult_VM<PaginatedList<PaymentHistory_VM>>
         {
