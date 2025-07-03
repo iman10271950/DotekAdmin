@@ -20,8 +20,16 @@ builder.WebHost.ConfigureKestrel(serverOptions =>
 
 
 string envirment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 if (envirment == "Staging")
 {
     builder.Configuration.AddJsonFile($"appsettings.json");
@@ -57,7 +65,7 @@ var app = builder.Build();
 //{
 app.UseDeveloperExceptionPage();
 //}
-
+app.UseCors("AllowAll");
 var staging = app.Environment.IsStaging();
 
 if ((envirment ?? "") != "Production")

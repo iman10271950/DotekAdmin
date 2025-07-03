@@ -14,6 +14,9 @@ public class GetBaseWalletInformationQuery:IRequest<BaseResult_VM<Wallet_VM>>
 {
     public int? PageNumber { get; set; } = 1;
     public int? PageSize { get; set; } = 5;
+    public int? OtherUserPageNumber { get; set; } = 1;
+    public int? OtherUserPageSize { get; set; } = 5;
+
 }
 
 public class
@@ -42,6 +45,8 @@ public class
             CompanyId = _securityOptions.Value.CompanyCode,
             PageNumber = request.PageNumber,
             PageSize = request.PageSize,
+            OtherUserPageNumber = request.OtherUserPageNumber,
+            OtherUserPageSize = request.OtherUserPageSize,
         };
         string encryptedInput = AES.EncryptString(_securityOptions.Value.DPassword, JsonConvert.SerializeObject(input));
 
@@ -88,5 +93,8 @@ public class
         public long CompanyId { get; set; }
         public int? PageNumber { get; set; } = 1;
         public int? PageSize { get; set; } = 5;
+        public int? OtherUserPageNumber { get; set; } = 1;
+        public int? OtherUserPageSize { get; set; } = 5;
+
     }
 }

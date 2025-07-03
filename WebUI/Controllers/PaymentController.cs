@@ -42,6 +42,7 @@ public class PaymentController:ApiControllerBase
     /// <param name="query"></param>
     /// <returns></returns>
     [HttpPost]
+    [DotekLog(AdminServices.Payment, AdminMethods.Payment_ConfrimUserWithdrawRequest)]
     public async Task<IActionResult> ConfrimUserWithdrawRequest([FromBody] ConfrimUserWithdrawRequestCommand command)
     {
         return Ok(await Mediator.Send(command));

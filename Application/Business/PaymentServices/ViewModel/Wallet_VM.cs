@@ -8,4 +8,5 @@ public class Wallet_VM
     public DateTime Create { get; set; }
     public DateTime LastUpdated { get; set; }
     public PaginatedList<PaymentHistory_VM> PaymentDataHistory { get; set; }
+     public PaginatedList<PaymentHistory_VM> OtherUserPaymentDataHistory { get; set; }
 }
