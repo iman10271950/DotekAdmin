@@ -227,6 +227,17 @@ namespace WebUI.Controllers
             return Ok(await Mediator.Send(command));
         }
         #endregion
+        /// <summary>
+    //    دزیافت لیست فاکتور ها با پیجینگ
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public async Task<IActionResult> GetAllInvoiceList([FromBody] GetAllInvoiceListQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        
      
     }
 }

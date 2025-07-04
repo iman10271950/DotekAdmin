@@ -27,7 +27,7 @@ namespace Application.Business.DotekRequest.Query
         }
         public async Task<BaseResult_VM<List<Product_VM>>> Handle(GetDotekAllProductListWithFilterQuery request, CancellationToken cancellationToken)
         {
-            var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<List<Product_VM>>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(request), "Request_GetAllProductListWithFilter");
+            var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<List<Product_VM>>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(request), "Admin_GetAllProductListWithFilter");
             if (methodResult.Code == 103)
             {
                 return methodResult.Result;
