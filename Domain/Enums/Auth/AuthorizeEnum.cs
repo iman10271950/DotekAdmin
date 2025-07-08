@@ -43,6 +43,7 @@ namespace Domain.Enums.Auth
         Dotek_GetAllProductListWithFilter = 11,
         [Description("")]
         Dotek_GetlAllDotekRequest=12,
+        // Payment_GetBaseWalletInformation
         //[Description("دریافت لیست محصولات")]
         //Request_GetAllProductListWithFilter=9,
 

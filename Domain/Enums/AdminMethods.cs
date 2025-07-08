@@ -29,9 +29,10 @@ public enum AdminMethods
     #endregion
 
     #region  Payment
-
+    
     Payment_GetBaseWalletInformation=300001,   
     Payment_ConfrimUserWithdrawRequest=300002,
+   
     #endregion
  
 }

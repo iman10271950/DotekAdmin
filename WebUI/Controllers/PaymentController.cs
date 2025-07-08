@@ -20,7 +20,7 @@ public class PaymentController:ApiControllerBase
     /// <param name="query"></param>
     /// <returns></returns>
     [DotekAuthorize(AuthorizeEnum.Dotek_GetAllRoles)]
-    [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetAllRoles)]
+    [DotekLog(AdminServices.Payment, AdminMethods.Payment_GetBaseWalletInformation)]
     [HttpPost]
     public async Task<IActionResult> GetBaseWalletInformation([FromBody] GetBaseWalletInformationQuery command)
     {
