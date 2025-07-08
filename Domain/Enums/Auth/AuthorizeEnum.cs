@@ -41,11 +41,17 @@ namespace Domain.Enums.Auth
         Dotek_DeleteProduct = 10,
         [Description("دریافت لیست محصولات")]
         Dotek_GetAllProductListWithFilter = 11,
-        [Description("")]
-        Dotek_GetlAllDotekRequest=12,
-        // Payment_GetBaseWalletInformation
+        // [Description("")]
+        // Dotek_GetlAllDotekRequest=12,
+        [Description("دریافت اطلاعات کیف پول اصلی")]
+        Payment_GetBaseWalletInformation=10002,
+        [Description("دریافت لیست درخواست های انتقال ")]
+        Payment_GetPaymentDataNeedOperationList=10003,
+        [Description("تایید  درخواست  انتقال ")]
+        Payment_ConfrimUserWithdrawRequest=10004,
         //[Description("دریافت لیست محصولات")]
         //Request_GetAllProductListWithFilter=9,
+    
 
     }
 }

@@ -19,9 +19,9 @@ public class PaymentController:ApiControllerBase
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
-    [DotekAuthorize(AuthorizeEnum.Dotek_GetAllRoles)]
-    [DotekLog(AdminServices.Payment, AdminMethods.Payment_GetBaseWalletInformation)]
     [HttpPost]
+    [DotekAuthorize(AuthorizeEnum.Payment_GetBaseWalletInformation)]
+    [DotekLog(AdminServices.Payment, AdminMethods.Payment_GetBaseWalletInformation)]
     public async Task<IActionResult> GetBaseWalletInformation([FromBody] GetBaseWalletInformationQuery command)
     {
         return Ok(await Mediator.Send(command));
@@ -32,16 +32,19 @@ public class PaymentController:ApiControllerBase
     /// <param name="query"></param>
     /// <returns></returns>
     [HttpPost]
+    [DotekAuthorize(AuthorizeEnum.Payment_GetPaymentDataNeedOperationList)]
+    [DotekLog(AdminServices.Payment, AdminMethods.Payment_GetPaymentDataNeedOperationList)]
     public async Task<IActionResult> GetPaymentDataNeedOperationList([FromBody] GetPaymentDataNeedOperationListQuery command)
     {
         return Ok(await Mediator.Send(command));
     }
     /// <summary>
-    /// دریافت لیست درخواست های انتقال 
+    /// تایید  درخواست  انتقال 
     /// </summary>
     /// <param name="query"></param>
     /// <returns></returns>
     [HttpPost]
+    [DotekAuthorize(AuthorizeEnum.Payment_ConfrimUserWithdrawRequest)]
     [DotekLog(AdminServices.Payment, AdminMethods.Payment_ConfrimUserWithdrawRequest)]
     public async Task<IActionResult> ConfrimUserWithdrawRequest([FromBody] ConfrimUserWithdrawRequestCommand command)
     {
