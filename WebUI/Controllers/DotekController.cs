@@ -29,7 +29,7 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
-        [DotekAuthorize(AuthorizeEnum.Request_GetCurrentUserRequestList)]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetAllUserForAdmin)]
         [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetAllUserForAdmin)]
         [ProducesResponseType(typeof(AuthenticatedResponse_VM), 0)]
         [ProducesResponseType(typeof(List<Product_VM>), 1)]
@@ -116,6 +116,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_UpdateUsersStatus)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_UpdateUsersStatus)]
         public async Task<IActionResult> UpdateUsersStatus([FromBody] UpdateUsersStatusCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -178,7 +180,7 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
-        [DotekAuthorize(AuthorizeEnum.Dotek_GetAllProductListWithFilter)]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetlAllDotekRequest)]
         [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetlAllDotekRequest)]
         public async Task<IActionResult> GetlAllDotekRequest([FromBody] GetlAllDotekRequestQuery command)
         {
@@ -190,18 +192,21 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_UpdateDotekReques)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_UpdateDotekReques)]
         public async Task<IActionResult> UpdateDotekReques([FromBody] UpdateDotekRequesQtuery command)
         {
             return Ok(await Mediator.Send(command));
         }
         /// <summary>
-        ///  غیرفعال سازی درخواست
+        /// تغییر وضعیت دسته ای درخواست
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns> 
         /// 
         [HttpPost]
-        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GUpdateDotekRequestStatus)]
+        [DotekAuthorize(AuthorizeEnum.Dotek_UpdateDotekRequestStatus)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_UpdateDotekRequestStatus)]
         public async Task<IActionResult> UpdateDotekRequestStatus([FromBody] UpdateDotekRequestStatusCommand command)
         {
             return Ok(await Mediator.Send(command));
@@ -212,6 +217,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_PrepaireRequestList)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_PrepaireRequestList)]
         public async Task<IActionResult> PrepaireRequestList([FromBody] PrepaireRequestListQuery command)
         {
             return Ok(await Mediator.Send(command));
@@ -222,6 +229,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpGet]
+        [DotekAuthorize(AuthorizeEnum.Dotek_PrepaireDotekServices)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_PrepaireDotekServices)]
         public async Task<IActionResult> PrepaireDotekServices([FromQuery] PrepaireDotekServicesQuery command)
         {
             return Ok(await Mediator.Send(command));
@@ -233,6 +242,8 @@ namespace WebUI.Controllers
         /// <param name="query"></param>
         /// <returns></returns>
         [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetAllInvoiceList)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetAllInvoiceList)]
         public async Task<IActionResult> GetAllInvoiceList([FromBody] GetAllInvoiceListQuery command)
         {
             return Ok(await Mediator.Send(command));

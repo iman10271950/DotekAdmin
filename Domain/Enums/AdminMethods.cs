@@ -2,7 +2,7 @@ namespace Domain.Enums;
 
 public enum AdminMethods
 {
-    #region  Request
+    #region  Dotek
     Dotek_GetAllUserForAdmin=100001,
     Dotek_GetAllRoles=100002,
     Dotek_GetUserInformationWithIdInAdmin=100003,
@@ -15,9 +15,12 @@ public enum AdminMethods
     Dotek_DeleteProduct=100010,
     Dotek_GetAllProductListWithFilter=100011,
     Dotek_GetlAllDotekRequest=100012,
-    Dotek_GUpdateDotekRequestStatus=100013,
-    
-
+    Dotek_UpdateDotekRequestStatus=100013,
+    Dotek_UpdateUsersStatus=100014,
+    Dotek_UpdateDotekReques=100015,
+    Dotek_PrepaireRequestList=100016,
+    Dotek_PrepaireDotekServices=100017,
+    Dotek_GetAllInvoiceList=100018,
     #endregion
     
     #region  User 

@@ -9,16 +9,7 @@ namespace Domain.Enums.Auth
 {
     public enum AuthorizeEnum
     {
-        //    [Description("دریافت آدرس با کد پستی")]
-        //    Request_GetAddressFromPostalCode=3,
-        //    [Description("دریافت لیست درخواست های خرید مطابق")]
-        //    Request_GetSimilarRequestList=4,
-        //    [Description("افزودن درخواست")]
-        //    Request_InsertRequest=5,
-        //    [Description("دریافت پیش نیاز های افزودن درخواست")]
-        //    Request_PrepaireInsertRequest=6,
-        //    [Description("دریافت اطلاعات درخواست با شناسه")]
-        //    Request_GetRequestInformationWithID=7,
+    //Dotek
         [Description("دریافت لیست درخواست ها")]
         Request_GetCurrentUserRequestList = 1,
         [Description("دریافت لیست نقش ها")]
@@ -41,16 +32,34 @@ namespace Domain.Enums.Auth
         Dotek_DeleteProduct = 10,
         [Description("دریافت لیست محصولات")]
         Dotek_GetAllProductListWithFilter = 11,
-        // [Description("")]
-        // Dotek_GetlAllDotekRequest=12,
+        [Description("دریافت لیست کاربران")]
+        Dotek_GetAllUserForAdmin=10005,
+        [Description(" ویرایش وضعیت دسته کاربران")]
+        Dotek_UpdateUsersStatus=10006,
+        [Description(" دریافت لیست درخواست ها")]
+        Dotek_GetlAllDotekRequest=10007,
+        [Description(" به روز رسانی درخواست")]
+        Dotek_UpdateDotekReques=10008,
+        [Description("تغییر وضعیت دسته ای درخواست")]
+        Dotek_UpdateDotekRequestStatus=10009,
+        [Description("پیش نیاز های لیست درخواست ها")]
+        Dotek_PrepaireRequestList=10010,
+        [Description("پیش نیاز های سرویس های دوتک")]
+        Dotek_PrepaireDotekServices=10011,
+        [Description(" دزیافت لیست فاکتور ها با پیجینگ")]
+        Dotek_GetAllInvoiceList=10012,
+        
+        
+        
+        
+        //Payment
         [Description("دریافت اطلاعات کیف پول اصلی")]
         Payment_GetBaseWalletInformation=10002,
         [Description("دریافت لیست درخواست های انتقال ")]
         Payment_GetPaymentDataNeedOperationList=10003,
         [Description("تایید  درخواست  انتقال ")]
         Payment_ConfrimUserWithdrawRequest=10004,
-        //[Description("دریافت لیست محصولات")]
-        //Request_GetAllProductListWithFilter=9,
+  
     
 
     }
