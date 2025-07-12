@@ -59,6 +59,8 @@ namespace Domain.Enums.Auth
         Payment_GetPaymentDataNeedOperationList=10003,
         [Description("تایید  درخواست  انتقال ")]
         Payment_ConfrimUserWithdrawRequest=10004,
+        [Description("تایید فاکتور برای انتقال وجه")]
+        Payment_ConfrimInvoicePayement=10013,
   
     
 

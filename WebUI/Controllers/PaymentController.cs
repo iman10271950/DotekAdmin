@@ -50,5 +50,18 @@ public class PaymentController:ApiControllerBase
     {
         return Ok(await Mediator.Send(command));
     }
+    /// <summary>
+    /// تایید فاکتور برای انتقال وجه
+    /// </summary>
+    /// <param name="query"></param>
+    /// <returns></returns>
+    [HttpPost]
+    [DotekAuthorize(AuthorizeEnum.Payment_ConfrimInvoicePayement)]
+    [DotekLog(AdminServices.Payment, AdminMethods.Payment_ConfrimInvoicePayement)]
+    public async Task<IActionResult> ConfrimInvoicePayement([FromBody] ConfrimInvoicePayementQuery command)
+    {
+        return Ok(await Mediator.Send(command));
+    }
+    
     
 }

@@ -1,6 +1,9 @@
-//namespace Application.Business.PaymentServices.Command;
+using Application.Common.BaseEntities;
+using MediatR;
 
-//public class TransferMoneyUserWalletCommand
-//{
+namespace Application.Business.PaymentServices.Command;
+
+public class TransferMoneyUserWalletCommand:IRequest<BaseResult_VM<bool>>
+{
     
-//}
+}
