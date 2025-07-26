@@ -38,30 +38,35 @@ namespace Domain.Enums
         [Description("منتظر وارد کردن اطلاعات وسیله حمل توسط ادمین")]
         WaitingAdminVehicleInformation=5,
         /// <summary>
+        /// افزودن سند
+        /// </summary>
+        [Description("افزودن سند")]
+        AddDocument=6,
+        /// <summary>
         /// بارگیری محصول
         /// </summary>
         [Description("بارگیری محصول")]
-        LoadingProduct=6,
+        LoadingProduct=7,
         /// <summary>
         /// منتظر تایید فاکتور
         /// </summary>
         [Description("منتظر تایید فاکتور")]
-        WaitingForInvoiceConfirmation = 7,
+        WaitingForInvoiceConfirmation = 8,
         /// <summary>
         ///تسویه حساب
         /// </summary>
         [Description("تسویه حساب")]
-        AccountSettlement = 8,
+        AccountSettlement = 9,
         /// <summary>
         /// 
         /// </summary>
         [Description("اتمام معامله با موفقیت")]
-        SuccessfullyDone=9,
+        SuccessfullyDone=10,
         /// <summary>
         /// غیرفعال
         /// </summary>
         [Description("غیرفعال")]
-        inActive =10,
+        inActive =11,
 
     }
 }
