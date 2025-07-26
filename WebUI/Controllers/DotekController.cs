@@ -1,4 +1,5 @@
 ﻿using Application.Business.Common.ViewModel;
+using Application.Business.DotekDocument.Query;
 using Application.Business.DotekRequest.Query;
 using Application.Business.DotekRequest.ViewModel;
 using Application.Business.DotekUser.Command;
@@ -237,7 +238,7 @@ namespace WebUI.Controllers
         }
         #endregion
         /// <summary>
-    //    دزیافت لیست فاکتور ها با پیجینگ
+        /// اضافه کردن وسیله حمل
         /// </summary>
         /// <param name="query"></param>
         /// <returns></returns>
@@ -248,7 +249,95 @@ namespace WebUI.Controllers
         {
             return Ok(await Mediator.Send(command));
         }
+        /// <summary>
+        //    دزیافت لیست فاکتور ها با پیجینگ
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_InsertTransportVehicle)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_InsertTransportVehicle)]
+        public async Task<IActionResult> InsertTransportVehicle([FromBody] InsertTransportVehicleQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// افزودن وسیله حمل به درخواست
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_UpsertRequestTransportVehicle)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_UpsertRequestTransportVehicle)]
+        public async Task<IActionResult> UpsertRequestTransportVehicle([FromBody] UpsertRequestTransportVehicleQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// دریافت لیست وسایل حمل
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetAllTransportVehicleListWithFilter)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetAllTransportVehicleListWithFilter)]
+        public async Task<IActionResult> GetAllTransportVehicleListWithFilter([FromBody] GetAllTransportVehicleListWithFilterQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+
+        #region  Documrnt
+        /// <summary>
+        /// افزودن سند برای درخواست 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+
+        [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_AddRequestDucuments)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_AddRequestDucuments)]
+        public async Task<IActionResult> AddRequestDucuments([FromBody] AddRequestDucumentsQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// حذف سند 
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_DeleteDocumentQuery)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_DeleteDocumentQuery)]
+        public async Task<IActionResult> DeleteDocumentQuery([FromBody] DeleteDocumentQueryHandler command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// دریافت لیست نوع اسناد قابل افزودن
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetDucumentTypeList)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetDucumentTypeList)]
+        public async Task<IActionResult> GetDucumentTypeList([FromBody] GetDucumentTypeListQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
+        /// <summary>
+        /// دریافت لیست اسناد درخواست
+        /// </summary>
+        /// <param name="command"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [DotekAuthorize(AuthorizeEnum.Dotek_GetRequestDocument)]
+        [DotekLog(AdminServices.Dotek, AdminMethods.Dotek_GetRequestDocument)]
+        public async Task<IActionResult> GetRequestDocument([FromBody] GetRequestDocumentQuery command)
+        {
+            return Ok(await Mediator.Send(command));
+        }
         
+        #endregion
      
     }
 }

@@ -9,6 +9,7 @@ using Application.Common.InterFaces.Messager;
 using Application.Common.InterFaces.Services;
 using Application.Common.Messager.Enums;
 using Application.Common.Models;
+using Domain.Enums;
 using MediatR;
 using Newtonsoft.Json;
 
@@ -17,7 +18,7 @@ namespace Application.Business.DotekRequest.Query
   
     public class GetlAllDotekRequestQuery : IRequest<BaseResult_VM<PaginatedList<Request_VM>>>
     {
-     
+        public OrderStatus? Requeststatus { get; set; }
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;
     }
@@ -39,7 +40,7 @@ namespace Application.Business.DotekRequest.Query
                 Auth = _auth.GetDefaultAuth(),
                 PageNumber = request.PageNumber,
                 PageSize = request.PageSize,
-                SearchItems = null,
+                Requeststatus = request.Requeststatus??null,
             };
 
             var methodResult = await _clientMessager.CallMethodDirectly<BaseResult_VM<PaginatedList<Request_VM>>>(MicroServiceName.Dotek, JsonConvert.SerializeObject(input), "Admin_GetlAllRequestForAdmin");
@@ -57,7 +58,7 @@ namespace Application.Business.DotekRequest.Query
         }
         private class GetlAllDotekRequestInput
         {
-            public RequestListSearch_VM SearchItems { get; set; }
+            public OrderStatus? Requeststatus { get; set; }
             public OtherServicesAuth_VM Auth { get; set; }
             public int PageNumber { get; set; } = 1;
             public int PageSize { get; set; } = 10;

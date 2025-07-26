@@ -21,6 +21,13 @@ public enum AdminMethods
     Dotek_PrepaireRequestList=100016,
     Dotek_PrepaireDotekServices=100017,
     Dotek_GetAllInvoiceList=100018,
+    Dotek_GetAllTransportVehicleListWithFilter=100019,
+    Dotek_UpsertRequestTransportVehicle=100020,
+    Dotek_InsertTransportVehicle=100021,
+    Dotek_GetRequestDocument=100022,
+    Dotek_GetDucumentTypeList=100023,
+    Dotek_DeleteDocumentQuery=100024,
+    Dotek_AddRequestDucuments=100025,
     #endregion
     
     #region  User 

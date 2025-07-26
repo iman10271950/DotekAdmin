@@ -48,8 +48,20 @@ namespace Domain.Enums.Auth
         Dotek_PrepaireDotekServices=10011,
         [Description(" دزیافت لیست فاکتور ها با پیجینگ")]
         Dotek_GetAllInvoiceList=10012,
-        
-        
+        [Description(" دریافت لیست وسایل حمل")]
+        Dotek_GetAllTransportVehicleListWithFilter=10014,
+        [Description(" افزودن وسیله حمل به درخواست")]
+        Dotek_UpsertRequestTransportVehicle=10015,
+        [Description("اضافه کردن وسیله حمل")]
+        Dotek_InsertTransportVehicle=10016,
+        [Description("دریافت لیست اسناد درخواست")]
+        Dotek_GetRequestDocument=20014,
+        [Description(" دریافت لیست نوع اسناد قابل افزودن")]
+        Dotek_GetDucumentTypeList=20015,
+        [Description("حذف سند")]
+        Dotek_DeleteDocumentQuery=20016,
+        [Description("افزودن سند برای درخواست ")]
+        Dotek_AddRequestDucuments=20017,
         
         
         //Payment
